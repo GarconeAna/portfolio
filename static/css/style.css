@@ -81,6 +81,7 @@ section#sobre-mim div p {
   font-size: 1.2vw;
   font-weight: 500;
   color: #1C1C1C;
+  transition: .6s ease-out;
 }
 
 section#sobre-mim div p:hover{
@@ -110,32 +111,56 @@ section#projetos div#bloco-projeto{
   align-items: center;
 }
 
-section#projetos div#bloco-projeto div img {
+section#projetos div#bloco-projeto div#img-div {
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section#projetos div#bloco-projeto div#img-div img {
   display: block;
   margin: auto;
-  width: 50%;
+  width: 70%;
   background-color: #fff;
   padding: 1vw;
 
 }
 
-section#projetos div#bloco-projeto div p{
-  text-align: justify;
+section#projetos div#img-div div#alterar-projeto {
+  width: 0; 
+  height: 0; 
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 25px solid #fff;
+  cursor: pointer;
+  transition: .6s ease-out;
+}
+
+section#projetos div#bloco-projeto div#img-div div#alterar-projeto:hover {
+  transform: scale(1.2);
+}
+
+section#projetos div#bloco-projeto div#sobre-button h3{
+  font-size: 1vw;
+  text-align: center;
   font-weight: 500;
   padding: 1vw;
   margin: .5vw;
   color: #fff;
+  transition: .6s ease-out;
 }
 
-section#projetos div#bloco-projeto div{
-  padding: 1vw;
+section#projetos div#bloco-projeto div#sobre-button h3:hover{
+  background-color: #fff;
+  color: #1C1C1C;
 }
 
-section#projetos div#bloco-projeto div a {
+section#projetos div#bloco-projeto div#sobre-button a {
   text-decoration: none;
 }
 
-section#projetos div#bloco-projeto div button{
+section#projetos div#bloco-projeto div#sobre-button a button{
   border: 1px solid #1C1C1C;
   background-color: #fff;
   color: #1C1C1C;
@@ -149,7 +174,7 @@ section#projetos div#bloco-projeto div button{
   transition: .6s ease-out;
 }
 
-section#projetos div#bloco-projeto div button:hover {
+section#projetos div#bloco-projeto div#sobre-button a button:hover {
   transform: scale(1.2);
 }
 
