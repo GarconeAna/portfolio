@@ -8,8 +8,8 @@ mail_settings = {
   'MAIL_PORT': '465',
   'MAIL_USE_TLS': False,
   'MAIL_USE_SSL': True,
-  'MAIL_USERNAME': '',
-  'MAIL_PASSWORD': ''
+  'MAIL_USERNAME': 'gcarolina.portfolio@gmail.com',
+  'MAIL_PASSWORD': '@000gcarolina'
 }
 
 app.config.update(mail_settings)
