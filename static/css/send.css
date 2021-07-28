@@ -19,13 +19,13 @@ section#success div#card{
   background-color: #1c1c1c;
   text-align: center;
   padding: 4vw;
-  border-radius: 2rem;
+  border-radius: 2vw;
   color: #fff;
-  width: 40%;
+  width: 40vw;
 }
 
 section#success div#card i{
-  font-size: 5rem;
+  font-size: 5vw;
 }
 
 section#success div#card h1{
@@ -44,10 +44,10 @@ section#success div#card p{
 
 section#success div#card a{
   text-decoration: none;
-  padding: 1rem;
+  padding: 1vw;
   border: 1px solid #fff;
   color: #fff;
-  border-radius: .4rem;
+  border-radius: .4vw;
   transition: all .4s ease-out;
 }
 
