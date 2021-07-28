@@ -23,7 +23,7 @@ nav ul {
 }
 
 nav ul li{
-  padding: 1.5rem;
+  padding: 1.5vw;
 }
 
 nav ul li a {
@@ -120,18 +120,19 @@ section#projetos div#bloco-projeto div#img-div {
 section#projetos div#bloco-projeto div#img-div img {
   display: block;
   margin: auto;
-  width: 70%;
+  width: 20vw;
   background-color: #fff;
   padding: 1vw;
 
 }
 
 section#projetos div#img-div div#alterar-projeto {
+  margin: 1vw;
   width: 0; 
   height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-left: 25px solid #fff;
+  border-top: 3vw solid transparent;
+  border-bottom: 3vw solid transparent;
+  border-left: 3vw solid #fff;
   cursor: pointer;
   transition: .6s ease-out;
 }
@@ -141,6 +142,7 @@ section#projetos div#bloco-projeto div#img-div div#alterar-projeto:hover {
 }
 
 section#projetos div#bloco-projeto div#sobre-button h3{
+  width: 40vw;
   font-size: 1vw;
   text-align: center;
   font-weight: 500;
@@ -163,12 +165,12 @@ section#projetos div#bloco-projeto div#sobre-button a button{
   border: 1px solid #1C1C1C;
   background-color: #fff;
   color: #1C1C1C;
-  padding: .8rem;
+  padding: .8vw;
   font-weight: 600;
   border-radius: .5vw;
   display: block;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 2vw;
   cursor: pointer;
   transition: .6s ease-out;
 }
@@ -273,7 +275,7 @@ section#contato div#icons a {
   text-decoration: none;
   color: #fff;
   font-size: 3vw;
-  padding: 2rem;
+  padding: 2vw;
   transition: .6s ease-out;
 }
 
@@ -294,10 +296,10 @@ section#contato div form {
 section#contato div form input,
 textarea {
   width: 100%;
-  padding: 0.5em;
-  font-size: 1.2rem;
+  padding: 1vw;
+  font-size: 1.2vw;
   margin: 0 0 1em;
-  border: 2px solid #fff;
+  border: .2vw solid #fff;
   outline: none;
 }
 
@@ -311,13 +313,13 @@ section#contato div form button{
   border: 1px solid #1C1C1C;
   background-color: #fff;
   color: #1C1C1C;
-  padding: .8rem;
+  padding: .8vw;
   font-size: 1.2vw;
   font-weight: 600;
   border-radius: .5vw;
   display: block;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 1vw;
   cursor: pointer;
   transition: .6s ease-out;
   width: 40%;
