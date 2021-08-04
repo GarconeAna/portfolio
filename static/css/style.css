@@ -93,6 +93,7 @@ section#sobre-mim div p:hover{
 section#projetos {
   padding: 3vw;
   background-color: #1C1C1C;
+  position: relative;
 }
 
 section#projetos h2 {
@@ -102,6 +103,18 @@ section#projetos h2 {
   display: flex;
   justify-content: flex-end;
   padding-bottom: 1vw;
+}
+
+section#projetos a#config {
+  padding: 1rem;
+  text-align: end;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1vw;
+  transition: all .2s ease-out;
+  position: absolute;
+  top: 0;
+  right: 1rem;
 }
 
 section#projetos div#bloco-projeto{
