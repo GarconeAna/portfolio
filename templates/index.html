@@ -34,22 +34,25 @@
       <section id="projetos">
          <h2>Projetos</h2>
 
-         <a href="/adm" id="config"><i class="fa fa-cog" aria-hidden="true"></i></a>
+         <a href="/login" id="config"><i class="fa fa-cog" aria-hidden="true"></i></a>
 
+         {% for p in projetos %}
          <div id="bloco-projeto">
 
             <div id="img-div">
-               <img id="imagem" src="../static/img/face.png" alt="Foto representando o projeto">
-               <div value="primeiro" id="alterar-projeto"></div>
+               <img id="imagem" src="{{p.imagem}}" alt="Foto representando o projeto">
+               <!-- <div value="primeiro" id="alterar-projeto"></div> -->
             </div>
 
             <div id="sobre-button">
-               <h3><span id="sobre">O projeto 'Jogo do Humor' mostra um personagem e suas emoções. O primeiro projeto do módulo 2 usando html, css e javascript.</span></h3>
-               <a href="https://github.com/GarconeAna/personagem" target="_blank" id="alterar-link"><button>Saiba mais</button></a>
+               <h3><span id="sobre">{{p.descricao}}</span></h3>
+               <a href="{{p.link}}" target="_blank" id="alterar-link"><button>Saiba mais</button></a>
             </div>
 
             <!-- <div value="primeiro" id="alterar-projeto"></div> -->
          </div>
+         {% endfor %}
+
       </section>
 
       <section id="habilidades">
