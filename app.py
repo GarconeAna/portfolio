@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, session
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy 
 from config import email, email_senha, url_postegresql
@@ -42,12 +42,18 @@ class Projeto(db.Model):
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  session['user_logado'] = None
+  projetos = Projeto.query.all()
+  return render_template('index.html', projetos=projetos)
 
 @app.route('/adm')
 def adm():
+  if 'user_logado' not in session or session['user_logado'] == None:
+    flash('Faça login antes de acessar essa rota!')
+    return redirect('/login')
+
   projetos = Projeto.query.all()
-  return render_template('adm.html', projetos=projetos)
+  return render_template('adm.html', projetos=projetos, projeto='')
 
 @app.route('/new', methods = ['GET', 'POST'])
 def new():
@@ -61,8 +67,53 @@ def new():
 
     db.session.add(projeto)
     db.session.commit()
-    flash('confia, com fé, dá bom!')
+    flash('Projeto cadastrado com sucesso!')
     return redirect('/adm')
+  flash('Você não tem autorização para acessar essa página')
+  return redirect('/login')
+
+@app.route('/delete/<id>')
+def delete(id):
+  projeto = Projeto.query.get(id)
+  db.session.delete(projeto)
+  db.session.commit()
+  flash('Projeto apagado com sucesso!')
+  return redirect('/adm')
+
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit(id):
+  if 'user_logado' not in session or session['user_logado'] == None:
+    flash('Faça login antes de acessar essa rota!')
+    return redirect('/login')
+  projeto = Projeto.query.get(id)
+  projetos = Projeto.query.all()
+  if request.method == 'POST':
+    projeto.nome = request.form['nome']
+    projeto.descricao = request.form['descricao']
+    projeto.imagem = request.form['imagem']
+    projeto.link = request.form['link']
+    db.session.commit()
+    return redirect('/adm')
+  return render_template('adm.html', projeto=projeto, projetos=projetos)
+
+@app.route('/<id>')
+def projeto_por_id(id):
+  projetoDel = Projeto.query.get(id)
+  return render_template('adm.html', projetoDel=projetoDel, projeto='')
+
+@app.route('/login')
+def login():
+  return render_template('login.html')
+
+@app.route('/auth', methods=['GET', 'POST'])
+def auth():
+  if request.form['senha'] == 'admin':
+    session['user_logado'] = 'logado'
+    flash('Login feito com sucesso!')
+    return redirect('/adm')
+  else:
+    flash('Erro no login.')
+    return redirect('/login')
 
 @app.route('/send', methods = ['GET', 'POST'])
 def send():
