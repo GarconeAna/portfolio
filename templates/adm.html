@@ -9,59 +9,93 @@
 </head>
 <body>
 
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
+  <section>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <a href="/" id="config"><i class="fa fa-home" aria-hidden="true"></i></a>
+    {% if projeto == '' %}
+    <form action="/new" method="POST">
+    <h1>Cadastre um novo projeto</h1>
+    {% else %}
+    <form action="/edit/{{projeto.id}}" method="POST">
+    <h1>Atualize um novo projeto</h1>
     {% endif %}
-  {% endwith %}
 
-  <form action="/new" method="POST">
-    <h1>Cdastre um novo projeto</h1>
+      <label for="nome">Nome</label>
+      <input type="text" placeholder="Nome do projeto" id="nome" name="nome" value="{{projeto.nome}}">
 
-    <label for="nome">Nome</label>
-    <input type="text" placeholder="Nome do projeto" id="nome" name="nome">
+      <label for="imagem">Imagem</label>
+      <input type="text" placeholder="Link da imagem" id="imagem" name="imagem" value="{{projeto.imagem}}">
 
-    <label for="imagem">Imagem</label>
-    <input type="text" placeholder="Link da imagem" id="imagem" name="imagem">
+      <label for="link">Link</label>
+      <input type="text" placeholder="Link do projeto" id="link" name="link" value="{{projeto.link}}">
 
-    <label for="link">Link</label>
-    <input type="text" placeholder="Link do projeto" id="link" name="link">
+      <label for="descricao">Descrição</label>
+      <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Digite a descrição do projeto">{{projeto.descricao}}</textarea>
 
-    <label for="descricao">Descrição</label>
-    <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Digite a descrição do projeto"></textarea>
+      {% if projeto == '' %}
+      <button type="submit">Cadastrar</button>
+      {% else %}
+      <button type="submit">Atualizar</button>
+      <a href="/adm">Cancelar</a>
+      {% endif %}
+    </form>
+  </section>
 
-    <button type="submit">Enviar</button>
-  </form>
+  <section>
+    <table>
 
-  <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Imagem</th>
+          <th>Link</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nome</th>
-        <th>Imagem</th>
-        <th>Link</th>
-        <th>Descrição</th>
-      </tr>
-    </thead>
+      <tbody>
+        {% for p in projetos %}
+        <tr>
+          <td>{{p.id}}</td>
+          <td>{{p.nome}}</td>
+          <td>{{p.imagem}}</td>
+          <td>{{p.link}}</td>
+          <td>{{p.descricao}}</td>
+          <td>
+            <a href="/edit/{{p.id}}">Editar</a>
+            <a href="/{{p.id}}">Apagar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
 
-    <tbody>
-      {% for p in projetos %}
-      <tr>
-        <td>{{p.id}}</td>
-        <td>{{p.nome}}</td>
-        <td>{{p.imagem}}</td>
-        <td>{{p.link}}</td>
-        <td>{{p.descricao}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
+    </table>
+  </section>
 
-  </table>
+  {% if projetoDel != undefined %}
+  <section>
+    <div>
+      <a href="/adm" id="fechar"><i></i></a>
+      <h2>Confirmação</h2>
+      <p>Deseja realmente apagar o projeto: {{projetoDel.nome}}</p>
+      <div>
+        <a href="/adm">Cancelar</a>
+        <a href="/delete/{{projetoDel.id}}">Apagar</a>
+      </div>
+    </div>
+  </section>
+  {% endif %}
 
   <script src="../static/js/adm.js"></script>
 </body>
