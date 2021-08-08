@@ -26,7 +26,7 @@
     <h1>Cadastre um novo projeto</h1>
     {% else %}
     <form action="/edit/{{projeto.id}}" method="POST">
-    <h1>Atualize um novo projeto</h1>
+    <h1>Atualize o projeto</h1>
     {% endif %}
 
       <label for="nome">Nome</label>
@@ -50,7 +50,9 @@
     </form>
   </section>
 
+  {% if projeto == '' %}
   <section>
+
     <table>
 
       <thead>
@@ -82,19 +84,20 @@
 
     </table>
   </section>
+  {% endif %}
 
   {% if projetoDel != undefined %}
-  <section>
-    <div>
-      <a href="/adm" id="fechar"><i></i></a>
-      <h2>Confirmação</h2>
-      <p>Deseja realmente apagar o projeto: {{projetoDel.nome}}</p>
+    <section>
       <div>
-        <a href="/adm">Cancelar</a>
-        <a href="/delete/{{projetoDel.id}}">Apagar</a>
+        <a href="/adm" id="fechar">Fechar X</a>
+        <h2>Confirmação</h2>
+        <p>Deseja realmente apagar o projeto: {{projetoDel.nome}} </p>
+        <div>
+          <a href="/adm">Cancelar</a>
+          <a href="/delete/{{projetoDel.id}}">Apagar</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   {% endif %}
 
   <script src="../static/js/adm.js"></script>
