@@ -32,7 +32,7 @@ class Projeto(db.Model):
   nome = db.Column(db.String(150), nullable = False)
   imagem = db.Column(db.String(500), nullable = False)
   descricao = db.Column(db.String(500), nullable = False)
-  link = db.Column(db.String(300), nullable = False)
+  link = db.Column(db.String(500), nullable = False)
 
   def __init__(self, nome, imagem, descricao, link):
     self.nome = nome
@@ -67,39 +67,48 @@ def new():
 
     db.session.add(projeto)
     db.session.commit()
+
     flash('Projeto cadastrado com sucesso!')
     return redirect('/adm')
+
   flash('Você não tem autorização para acessar essa página')
   return redirect('/login')
 
-@app.route('/delete/<id>')
-def delete(id):
-  projeto = Projeto.query.get(id)
-  db.session.delete(projeto)
-  db.session.commit()
-  flash('Projeto apagado com sucesso!')
-  return redirect('/adm')
+@app.route('/<id>')
+def projeto_por_id(id):
+  projetoDel = Projeto.query.get(id)
+  return render_template('adm.html', projetoDel=projetoDel, projeto='')
 
 @app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
   if 'user_logado' not in session or session['user_logado'] == None:
     flash('Faça login antes de acessar essa rota!')
     return redirect('/login')
+
   projeto = Projeto.query.get(id)
   projetos = Projeto.query.all()
+
   if request.method == 'POST':
     projeto.nome = request.form['nome']
-    projeto.descricao = request.form['descricao']
     projeto.imagem = request.form['imagem']
+    projeto.descricao = request.form['descricao']
     projeto.link = request.form['link']
+
     db.session.commit()
+
     return redirect('/adm')
+
   return render_template('adm.html', projeto=projeto, projetos=projetos)
 
-@app.route('/<id>')
-def projeto_por_id(id):
-  projetoDel = Projeto.query.get(id)
-  return render_template('adm.html', projetoDel=projetoDel, projeto='')
+@app.route('/delete/<id>')
+def delete(id):
+  projeto = Projeto.query.get(id)
+
+  db.session.delete(projeto)
+  db.session.commit()
+
+  flash('Projeto apagado com sucesso!')
+  return redirect('/adm')
 
 @app.route('/login')
 def login():
