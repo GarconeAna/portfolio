@@ -37,20 +37,26 @@
          <a href="/login" id="config"><i class="fa fa-cog" aria-hidden="true"></i></a>
 
          {% for p in projetos %}
-         <div id="bloco-projeto">
+         <div>
+            <h2>{{p.nome}}</h2>
+            <img src="{{p.imagem}}" alt="img-lorem">
+            <p>{{p.descricao}}</p>
+            <a href="{{p.link}}" target="_blank">Veja mais</a>
+         </div>
+         <!-- <div id="bloco-projeto">
 
             <div id="img-div">
                <img id="imagem" src="{{p.imagem}}" alt="Foto representando o projeto">
-               <!-- <div value="primeiro" id="alterar-projeto"></div> -->
-            </div>
+               <div value="primeiro" id="alterar-projeto"></div>
+            </div> >>>>>>
 
             <div id="sobre-button">
                <h3><span id="sobre">{{p.descricao}}</span></h3>
                <a href="{{p.link}}" target="_blank" id="alterar-link"><button>Saiba mais</button></a>
             </div>
 
-            <!-- <div value="primeiro" id="alterar-projeto"></div> -->
-         </div>
+            <div value="primeiro" id="alterar-projeto"></div>
+         </div> >>>>>>>>>>> -->
          {% endfor %}
 
       </section>
