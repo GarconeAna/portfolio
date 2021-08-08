@@ -90,107 +90,104 @@ section#sobre-mim div p:hover{
   padding: 2vw;
 }
 
+
 section#projetos {
   padding: 3vw;
   background-color: #1C1C1C;
   position: relative;
 }
 
-section#projetos h2 {
+section#projetos div#titulo-icone{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+section#projetos div#titulo-icone h2 {
   font-size: 2.2vw;
   font-weight: 700;
   color: #fff;
-  display: flex;
-  justify-content: flex-end;
+  text-align: right;
   padding-bottom: 1vw;
+  width: 50%;
 }
 
-section#projetos a#config {
-  padding: 1rem;
-  text-align: end;
-  text-decoration: none;
+section#projetos div#titulo-icone a#config {
+  font-size: 2.2vw;
+  font-weight: 700;
   color: #fff;
-  font-size: 1vw;
-  transition: all .2s ease-out;
-  position: absolute;
-  top: 0;
-  right: 1rem;
+  text-align: left;
+  padding-bottom: 1vw;
+  text-decoration: none;
+  width: 50%;
+  
 }
 
-section#projetos div#bloco-projeto{
+section#projetos div#projeto{
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-section#projetos div#bloco-projeto div#img-div {
-  padding: 1vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+section#projetos div#projeto div#projeto-card {
+  padding: 2rem;
+  margin: 1rem;
+  border: solid 1px #fff;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 1rem;
 }
 
-section#projetos div#bloco-projeto div#img-div img {
+section#projetos div#projeto div#projeto-card p {
+  color: #fff;
+  text-align: center;
+  height: 6.5rem;
+}
+
+section#projetos div#projeto div#projeto-card h3 {
+  color: #fff;
+  font-size: 1.5vw;
+  text-align: center;
+  padding: 1rem;
+}
+
+section#projetos div#projeto div#projeto-card img {
+  background-color: #fff;
+  padding: 1rem;
   display: block;
   margin: auto;
-  width: 20vw;
-  background-color: #fff;
-  padding: 1vw;
-
+  width: 10rem;
+  height: 10rem;
+  position: relative;
 }
 
-section#projetos div#img-div div#alterar-projeto {
-  margin: 1vw;
-  width: 0; 
-  height: 0; 
-  border-top: 3vw solid transparent;
-  border-bottom: 3vw solid transparent;
-  border-left: 3vw solid #fff;
-  cursor: pointer;
-  transition: .6s ease-out;
-}
-
-section#projetos div#bloco-projeto div#img-div div#alterar-projeto:hover {
-  transform: scale(1.2);
-}
-
-section#projetos div#bloco-projeto div#sobre-button h3{
-  width: 40vw;
-  font-size: 1vw;
-  text-align: center;
-  font-weight: 500;
-  padding: 1vw;
-  margin: .5vw;
-  color: #fff;
-  transition: .6s ease-out;
-}
-
-section#projetos div#bloco-projeto div#sobre-button h3:hover{
-  background-color: #fff;
-  color: #1C1C1C;
-}
-
-section#projetos div#bloco-projeto div#sobre-button a {
-  text-decoration: none;
-}
-
-section#projetos div#bloco-projeto div#sobre-button a button{
+section#projetos div#projeto div#projeto-card a {
   border: 1px solid #1C1C1C;
   background-color: #fff;
   color: #1C1C1C;
   padding: .8vw;
+  font-size: 1.2vw;
   font-weight: 600;
   border-radius: .5vw;
   display: block;
   margin: auto;
-  margin-top: 2vw;
+  margin-top: 1vw;
   cursor: pointer;
   transition: .6s ease-out;
+  width: 40%;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-section#projetos div#bloco-projeto div#sobre-button a button:hover {
-  transform: scale(1.2);
+section#projetos div#projeto div#projeto-card a:hover {
+  transform: scale(1.1);
 }
+
 
 section#habilidades {
   padding: 3vw;
